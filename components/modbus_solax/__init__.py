@@ -27,12 +27,6 @@ CONFIG_SCHEMA = (
 )
 
 
-def validate_serial_number(value):
-    value = cv.string_strict(value)
-    parts = [value[i : i + 2] for i in range(0, len(value), 2)]
-    return "".join(f"{part:02X}" for part in parts_int)
-
-
 def as_hex_array(value):
     cpp_array = [
         f"0x{part}" for part in [value[i : i + 2] for i in range(0, len(value), 2)]
@@ -56,7 +50,6 @@ def modbus_solax_device_schema():
     schema = {
         cv.GenerateID(CONF_MODBUS_SOLAX_ID): cv.use_id(ModbusSolax),
         cv.Required(CONF_ADDRESS): cv.hex_uint8_t,
-        cv.Required(CONF_SERIAL_NUMBER): validate_serial_number,
     }
     return cv.Schema(schema)
 
