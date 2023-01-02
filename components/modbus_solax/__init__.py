@@ -14,7 +14,6 @@ ModbusSolaxDevice = modbus_solax_ns.class_("ModbusSolaxDevice")
 MULTI_CONF = True
 
 CONF_MODBUS_SOLAX_ID = "modbus_solax_id"
-CONF_SERIAL_NUMBER = "serial_number"
 CONFIG_SCHEMA = (
     cv.Schema(
         {
@@ -58,5 +57,4 @@ async def register_modbus_solax_device(var, config):
     parent = await cg.get_variable(config[CONF_MODBUS_SOLAX_ID])
     cg.add(var.set_parent(parent))
     cg.add(var.set_address(config[CONF_ADDRESS]))
-    cg.add(var.set_serial_number(as_hex_array(config[CONF_SERIAL_NUMBER])))
     cg.add(parent.register_device(var))
