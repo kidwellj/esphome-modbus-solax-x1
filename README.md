@@ -59,6 +59,8 @@ ESPHome component to monitor a Solax X1 mini via RS485.
 
 ```
 
+The ESP32 boards usually provide three universal asynchronous receivers and transmitter (UART) ports. These are assigned in pairs, for receive (RX) and transmit (TX). Some UART ports are assigned to overlapping services, so will require pin reassignment if you want to use them, so it's best to stick to UART0, which typically uses GPIO3 (RX) GPIO1 (TX). 
+
 Please make sure to power the RS485 module with 3.3V because it affects the TTL (transistor-transistor logic) voltage between RS485 module and ESP.
 
 ### X1 Min RJ45 jack
